@@ -1,0 +1,109 @@
+{% extends "layouts/master.html" %}
+{% load static %}
+{% load filtros_productos_extras %}
+
+{% block titulo%}Listar producto{% endblock %}
+
+
+
+{% block contenido %}
+
+
+
+<header class="py-3">
+    <h1 class="text-center "> Productos </h1>
+</header>
+
+<main class="container">
+    <section class="py-3">  
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-5">
+                <form action="" method = "get" class="" id="form-filtro-producto">
+                    <div class="row g-3" >
+                        <div class="col-md-6">
+                            <label for="precio_min"class="form-control">Precio compra minimo</label>
+                            <input type="number" class="form-control" name="precio_min" value="{{precio_min}}" min= "0" max="99999999">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="precio_max"class="form-control">Precio compra maximo</label>
+                            <input type="number" class="form-control" name="precio_max" value="{{precio_max}}" min= "0" max="99999999">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fecha_vencimiento_min"class="form-control">Fecha fabricacion minimo</label>
+                            <input type="date"class="form-control" name="fecha_vencimiento_min" value="{{fecha_vencimiento_min}}" id="fecha_vencimiento_min">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fecha_vencimiento_max"class="form-control">Fecha fabricacion maximo</label>
+                            <input type="date" class="form-control" name="fecha_vencimiento_max" value="{{fecha_vencimiento_max}}" id="fecha_vencimiento_max">
+                        </div>                  
+                    </div>
+                    <div class="d-flex justify-content-evenly py-3" >
+                        <input type="submit" class="btn btn-primary" value="Buscar">
+                        <input type="reset" class="btn btn-secondary"value="Limpiar" id="reset_form">
+                    </div>
+                </form>
+            </div>
+	    </div>
+
+
+    </section>
+	<section >
+	    {% if  productos  %}
+           <div class="container_table">
+                <table class="table  table-striped-columns " id="listado_producto">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Precio costo</th>
+                        <th scope="col">Precio venta</th>
+                        <th scope="col">Fecha fabricacion </th>
+                        <th scope="col">Laboratorio</th>
+                        <th scope="col">Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in productos  %}
+                            <tr>
+        
+                                <td>{{producto.nombre}}</td>
+                                <td>{{producto.descripcion}}</td>
+                                <td>{{producto.p_costo|currency}}</td>
+                                <td>{{producto.p_venta|currency}}</td>
+                                <td>{{producto.f_fabricacion|date:"d-m-Y"}}</td>
+                                <td>{{producto.laboratorio}}</td>
+                                <td>
+                                    <a href="{% url "detalle_producto" producto.id %}"
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="right"
+                                        title="Clic para ver detalle: {{producto.nombre}}"
+                                        >
+                                        <img src="{{producto.imagen}}" alt="{{producto.nombe}}" class="" >
+                                    </a>
+                                </td>
+>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+           </div>
+
+	    {% else %}
+	        <p class="text-center">No existen productos disponibles</p>
+	    {% endif %}
+	</section>
+    <div class="py-3">
+        <a class="btn btn-success" href="{% url "add_producto" %}">Agregar producto</a> 
+    </div>
+ </main>
+
+{% endblock %}  
+
+{% block recursos_js %} 
+    {% load static %}
+    <script src="{% static "js/tooltip.js" %}"></script>
+    <script defer src="{% static 'js/datatable.js' %}"></script>
+    <script src="{% static "js/borrar_btn.js" %}"></script>
+
+
+{% endblock %}

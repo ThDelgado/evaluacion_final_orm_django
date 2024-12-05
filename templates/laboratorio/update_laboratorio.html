@@ -1,0 +1,36 @@
+
+
+{% extends "layouts/master.html" %}
+
+{% block vista %}Actualizar productos{% endblock %}
+
+{% block contenido %}
+    <header>
+        <h2 class="text-center" >Actualizar productos</h2>
+    </header>
+    <main class="container">
+        <section >
+            <main class="container">
+                <section >
+                    <div class="row justify-content-center"> 
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <form action="" method="post"> <!--agregamos method, para definir POS/GET, colocar certificado-->
+                                {% csrf_token %}
+                                <div>
+                                    {{form.as_p}} 
+                                </div>
+                                <div class ="py-3">
+                                     <input type="submit" value="Actualizar" class="btn btn-warning">
+                                </div>
+                            </form>
+                            <p class="fs-2">{{mensaje}}</p>
+                        </div> 
+                    </div>   
+                </section>
+            </main> 
+        
+        </section>
+        
+    </main>
+    
+{% endblock %}

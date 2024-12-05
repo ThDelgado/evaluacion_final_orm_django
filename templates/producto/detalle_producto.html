@@ -1,0 +1,55 @@
+
+{% extends "layouts/master.html" %}
+{% block titulo%}Detalle producto{% endblock %}
+
+{% block contenido %}
+    <header class="">
+        <h1 class="text-center ">Detalle  {{producto.nombre}}</h1>
+    </header>
+    <main class="container">
+        <section id= "">
+            <div class="container ">
+                <div class="row justify-content-center"> 
+                    <div class="col-12 col-md-6 col-lg-4 py-3 d-flex justify-content-center align-items-center">
+                        <div class="card w-65 text-center" id="img-table" >
+                            <img src="{{producto.imagen}}"  alt="{{producto.nombre}} " >
+                            <div class="card-body">
+                                {% comment %} {% if user == comentario.autor%} {% endcomment %}
+                                    <div class="d-flex justify-content-end">
+                                        <a href="" class="mx-2"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
+                                            data-bs-custom-class="custom-actualizar">
+                                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                                        </a>
+                                        <a href="" class="mx-2"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
+                                            data-bs-custom-class="custom-eliminar">
+                                            <i class="fa-regular fa-trash-can text-danger"></i>
+                                        </a>
+                                    </div>
+                                {% comment %} {% endif %}{% url "eliminar_comentario" comentario.id %} {% endcomment %}
+
+
+
+                            <h5 class="card-title">{{producto.nombre}}</h5>
+                            <p class="card-text">{{producto.descripcion}}</p>
+                            <p class="card-text">{{producto.f_fabricacion}}</p>
+                            <p class="card-text">{{producto.p_venta}}</p>
+                            <p class="card-text">{{producto.laboratorio}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+
+
+
+
+
+    </main>
+
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+
+{% extends "layouts/master.html" %}
+{% block titulo%}Detalle laboratorio{% endblock %}
+
+{% block contenido %}
+    <header class="">
+        <h1 class="text-center ">Laboratorio: {{laboratorio.nombre}}</h1>
+    </header>
+    <main class="container">
+        <section id= "">
+            <div class="container ">
+                <div class="row justify-content-center"> 
+                    <div class="col-12 col-md-6 col-lg-4 py-3 d-flex justify-content-center align-items-center">
+                        <div class="card w-65 text-center" id="img-table" >
+                            <img src="{{laboratorio.imagen}}"  alt="{{laboratorio.nombre}} " >
+                            <div class="card-body">
+                                {% comment %} {% if user == comentario.autor%} {% endcomment %}
+                                    <div class="d-flex justify-content-end">
+                                        <a href="{% url "update_laboratorio" laboratorio.id%}" class="mx-2"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Actualizar"
+                                            data-bs-custom-class="custom-actualizar">
+                                            <i class="fa-solid fa-pen-to-square text-warning"></i>
+                                        </a>
+                                        <a href="{% url "delete_laboratorio" laboratorio.id %}" class="mx-2"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Eliminar"
+                                            data-bs-custom-class="custom-eliminar">
+                                            <i class="fa-regular fa-trash-can text-danger"></i>
+                                        </a>
+                                    </div>
+                                {% comment %} {% endif %}{% url "eliminar_comentario" comentario.id %} {% endcomment %}
+
+
+
+                            <h5 class="card-title">{{laboratorio.nombre}}</h5>
+                            <p class="card-text">{{laboratorio.ciudad}}</p>
+                            <p class="card-text">{{laboratorio.pais}}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+
+
+
+
+
+    </main>
+
+
+
+{% endblock %}

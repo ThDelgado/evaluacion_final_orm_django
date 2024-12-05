@@ -1,0 +1,71 @@
+{% extends "layouts/master.html" %}
+{% load static %}
+
+
+{% block titulo%}Listar producto{% endblock %}
+
+
+
+{% block contenido %}
+
+
+
+<header class="py-3">
+    <h1 class="text-center "> Laboratorios </h1>
+</header>
+
+<main class="container">
+
+	<section >
+	    {% if laboratorios %}
+           <div class="container_table">
+                <table class="table  table-striped-columns " id="mi_tabla">
+                    <thead>
+                        <tr>
+
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Ciudad</th>
+                        <th scope="col">Ver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for laboratorio in laboratorios %}
+                            <tr>
+                                <td>{{laboratorio.nombre}}</td>
+                                <td>{{laboratorio.pais}}</td>
+                                <td>{{laboratorio.ciudad}}</td>                      
+                                <td>
+                                    <a href="{% url "detalle_laboratorio" laboratorio.id %}"
+                                        data-bs-toggle="tooltip" 
+                                        data-bs-placement="right"
+                                        title="Clic para ver detalle: {{laboratorio.nombre}}"
+                                        >
+                                        <img src="{{laboratorio.imagen}}" alt="{{laboratorio.nombe}}" class="" >
+                                    </a>
+                                </td>
+>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+           </div>
+
+	    {% else %}
+	        <p class="text-center">No existen laboratorios</p>
+	    {% endif %}
+	</section>
+    <div class="py-3">
+        <a class="btn btn-success" href="{% url "add_laboratorio" %}">Agregar producto</a> 
+    </div>
+ </main>
+
+{% endblock %}  
+
+{% block recursos_js %} 
+    {% load static %}
+    <script src="{% static "js/tooltip.js" %}"></script>
+    <script  defer src="{% static 'js/datatable.js' %}"></script>
+
+
+{% endblock %}
