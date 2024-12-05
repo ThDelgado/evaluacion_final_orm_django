@@ -1,12 +1,10 @@
-CUE: CLAVES PRIMARIAS Y CRUD 
-DRILLING: LISTADO DE PRODUCTOS 
+SIMULADOR PARA FABRICA DE PRODUCTOS FARMACEUTICOS 
 
 
-evaluacion 
-m7_s4
+Practica de consolidacion
 
 Para clonar:
-https://github.com/ThDelgado/app_supermercado.git
+https://github.com/ThDelgado/evaluacion_final_orm_django.git
 
 
 Thelma Delgado
@@ -39,12 +37,6 @@ pasos para instalar DEPENDENCIAS
         .\venv\scripts\activate
     3- restaurar DEPENDENCIAS
         pip install -r .\requirements.txt
-
-RESTAURAR BASE DE DATOS
--------------------------
-crear una base de datos llamada:___
-restaurar desde archivo : ____
-
 
 
 
